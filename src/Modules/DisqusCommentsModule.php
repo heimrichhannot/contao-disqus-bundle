@@ -59,7 +59,9 @@ class DisqusCommentsModule extends \Contao\Module
         $this->Template->wrapperId    = $this->strWrapperId;
 
         $this->Template->disqus_shortname = $this->disqus_shortname;
-
-        $this->Template->strMessage = 'DISQUS';
+        $this->Template->disqus_identifier = $this->disqus_identifier;
+        $url = Environment::get('url');
+        $path = Url::generateFrontendUrl($objPage->id);
+        $this->Template->disqus_pageUrl = $url.'/'.$path;
     }
 }

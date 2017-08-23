@@ -20,14 +20,14 @@ $arrDca['palettes']['__selector__'][] = 'disqus_addDisqus';
 
 $fields = [
     'disqus_addDisqus' => [
-        'label' => [],
+        'label' => &$GLOBALS['TL_LANG']['tl_news_archive']['disqus_addDisqus'],
         'exclude' => true,
         'inputType' => 'checkbox',
         'eval' => ['tl_class' => 'clr','submitOnChange' => true],
         'sql' => "char(1) NOT NULL default '0'",
     ],
     'disqus_shortname' => [
-        'label'                   => &$GLOBALS['TL_LANG']['tl_content']['disqus_shortname'],
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['disqus_shortname'],
         'exclude'                 => true,
         'inputType'               => 'text',
         'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),

@@ -15,18 +15,18 @@ $arrDca['palettes'][HeimrichHannot\ContaoDisqusBundle\Modules\DisqusNewsReaderMo
 
 $arrDca['palettes'][HeimrichHannot\ContaoDisqusBundle\Modules\DisqusCommentsModule::MODULE_NAME] =
     '{title_legend},name,headline,type;'
-    .'{disqus_legend},disqus_shortname';
+    .'{disqus_legend},disqus_shortname,disqus_identifier';
 
 $arrFields = [
     'disqus_shortname' => [
-        'label'                   => &$GLOBALS['TL_LANG']['tl_content']['disqus_shortname'],
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['disqus_shortname'],
         'exclude'                 => true,
         'inputType'               => 'text',
         'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
         'sql'                     => "varchar(255) NOT NULL default ''"
     ],
     'disqus_identifier' => [
-        'label'                   => &$GLOBALS['TL_LANG']['tl_content']['disqus_identifier'],
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['disqus_identifier'],
         'exclude'                 => true,
         'inputType'               => 'text',
         'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
