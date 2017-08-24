@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.1] - 2017-08-24
+
+### Changed 
+* removed unused language strings
+* updated translation
+
 ## [2.0.0] - 2017-08-24
 
 ### Changed

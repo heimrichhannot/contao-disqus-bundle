@@ -15,8 +15,7 @@ $arrLang['disqus_identifier']        = ['Einzigartiger Identifier', 'Ein einziga
 $arrLang['disqus_legend'] = 'Disqus Einstellungen';
 
 /**
- * Module names
+ * Modules
  */
 
-$GLOBALS['TL_LANG']['FMD'][\HeimrichHannot\ContaoDisqusBundle\Modules\DisqusNewsReaderModule::MODULE_NAME] = array('Nachrichtenleser mit Disqus', 'News Reader Module mit Disqus Kommentaren');
-$GLOBALS['TL_LANG']['FMD'][\HeimrichHannot\ContaoDisqusBundle\Modules\DisqusCommentsModule::MODULE_NAME] = array('Disqus Modul', 'Module, welches ein Disqus-Form einbindet.');
+$GLOBALS['TL_LANG']['FMD'][\HeimrichHannot\ContaoDisqusBundle\Modules\DisqusCommentsModule::MODULE_NAME] = array('Disqus Modul', 'Modul, welches ein Disqus-Form einbindet.');

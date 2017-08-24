@@ -13,3 +13,9 @@ $arrLang['disqus_identifier']        = ['Unique identifier', 'A unique identifie
  */
 
 $arrLang['disqus_legend'] = 'Disqus settings';
+
+/**
+ * Modules
+ */
+
+$GLOBALS['TL_LANG']['FMD'][\HeimrichHannot\ContaoDisqusBundle\Modules\DisqusCommentsModule::MODULE_NAME] = array('Disqus module', 'Module to integrate a disqus forum.');
