@@ -9,7 +9,9 @@
  */
 
 $GLOBALS['FE_MOD']['miscellaneous'][HeimrichHannot\ContaoDisqusBundle\Modules\DisqusCommentsModule::MODULE_NAME] = 'HeimrichHannot\ContaoDisqusBundle\Modules\DisqusCommentsModule';
-$GLOBALS['FE_MOD']['news'][HeimrichHannot\ContaoDisqusBundle\Modules\DisqusNewsReaderModule::MODULE_NAME] = 'HeimrichHannot\ContaoDisqusBundle\Modules\DisqusNewsReaderModule';
 
+/**
+ * Hooks
+ */
 
-
+$GLOBALS['TL_HOOKS']['parseArticles']['hhDisqusBundle'] = ['HeimrichHannot\ContaoDisqusBundle\EventListener\ParseArticlesHook', 'addDisqus'];

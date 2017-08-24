@@ -6,10 +6,10 @@
         var disqus_config = function () {
             <?php
                 if ($this->disqus_identifier) {
-                    echo 'this.page.identifier = $this->disqus_identifier;';
+                    echo 'this.page.identifier = '.$this->disqus_identifier.';';
                 }
                 if ($this->disqus_pageUrl) {
-                    echo 'this.page.url = $this->disqus_pageUrl;';
+                    echo 'this.page.url = "'.$this->disqus_pageUrl.'";';
                 }
             ?>
         };

@@ -3,7 +3,7 @@
 Add the disqus comment system to your contao page.
 
 ## Features
-* News reader module to easily append disqus to your news articles
+* integrates into news article rendering
 * stand alone module to integrate whereever you want
 
 ## Usage
@@ -20,13 +20,15 @@ composer require heimrichhannot/contao-disqus-bundle
 
 #### News 
 
-* active disqus comments in your news archive, where you want disqus comments
-* enter your disqus forum name in your news archive
-* create a news module with the bundled newsreader and use it on your news page
+* in your news template (usually `news_full.html5`), add following code:
+```
+<?php if ($this->disqus_section): ?>
+    <?php $this->disqus_section ?>
+<?php endif; ?>
+```
+* in your news archive, active disqus comments and enter disqus forum name
 
 #### Custom
 
 * create a module with the bundles disqus comments module and enter all need informations
 * put module on the page you like
-
-

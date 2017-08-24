@@ -11,8 +11,6 @@
 $arrDca     = &$GLOBALS['TL_DCA']['tl_module'];
 $translator = System::getContainer()->get('translator');
 
-$arrDca['palettes'][HeimrichHannot\ContaoDisqusBundle\Modules\DisqusNewsReaderModule::MODULE_NAME] = $arrDca['palettes']['newsreader'];
-
 $arrDca['palettes'][HeimrichHannot\ContaoDisqusBundle\Modules\DisqusCommentsModule::MODULE_NAME] =
     '{title_legend},name,headline,type;'
     .'{disqus_legend},disqus_shortname,disqus_identifier';
