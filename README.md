@@ -6,6 +6,11 @@ Add the disqus comment system to your contao page.
 * integrates into news article rendering
 * stand alone module to integrate wherever you want
 
+## Requirements
+
+* Contao 4.4
+* PHP 7
+
 ## Usage
 
 ### Installation
