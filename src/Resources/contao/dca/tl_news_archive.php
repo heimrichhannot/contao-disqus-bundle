@@ -15,7 +15,7 @@ $palette = \Contao\CoreBundle\DataContainer\PaletteManipulator::create();
 $palette->addField('disqus_addDisqus', 'comments_legend', $palette::POSITION_APPEND)
     ->applyToPalette('default', 'tl_news_archive');
 
-$arrDca['subpalettes']['disqus_addDisqus'] = 'disqus_shortname';
+$arrDca['subpalettes']['disqus_addDisqus'] = 'disqus_shortname, disqus_identifier';
 $arrDca['palettes']['__selector__'][] = 'disqus_addDisqus';
 
 $fields = [
@@ -28,6 +28,13 @@ $fields = [
     ],
     'disqus_shortname' => [
         'label'                   => &$GLOBALS['TL_LANG']['tl_module']['disqus_shortname'],
+        'exclude'                 => true,
+        'inputType'               => 'text',
+        'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
+    ],
+    'disqus_identifier' => [
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['disqus_identifier'],
         'exclude'                 => true,
         'inputType'               => 'text',
         'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),

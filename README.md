@@ -4,7 +4,7 @@ Add the disqus comment system to your contao page.
 
 ## Features
 * integrates into news article rendering
-* stand alone module to integrate whereever you want
+* stand alone module to integrate wherever you want
 
 ## Usage
 

@@ -24,7 +24,15 @@ class ParseArticlesHook
             return;
         }
         $disqus_shortname = $objArchive->disqus_shortname;
-        $disqus_identifier = $arrArticle['id'];
+        if ($objArchive->disqus_identifier)
+        {
+            $disqus_identifier = str_replace('{id}', $arrArticle['id'], $objArchive->disqus_identifier);
+        }
+        else
+        {
+            $disqus_identifier = $arrArticle['id'];
+        }
+
         $url = Environment::get('url');
         $path = Url::generateFrontendUrl($objPage->id);
         $disqus_pageUrl = $url.'/'.$path.'/'.$arrArticle['alias'];

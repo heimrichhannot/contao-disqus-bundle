@@ -1,16 +1,12 @@
 <div id="disqus_thread"></div>
 <script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
     {% if disqus_identifier is not null or disqus_pageUrl is not null %}
     var disqus_config = function () {
         {% if disqus_pageUrl is not null %}
             this.page.url = '{{ disqus_pageUrl }}';
         {% endif %}
         {% if disqus_identifier is not null %}
-            this.page.identifier = {{ disqus_identifier }};
+            this.page.identifier = '{{ disqus_identifier }}';
         {% endif %}
     };
     {% endif %}
