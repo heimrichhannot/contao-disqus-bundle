@@ -18,6 +18,7 @@ class ParseArticlesHook
 
     public function addDisqus(\FrontendTemplate $objTemplate, array $arrArticle, \Module $objModule)
     {
+        global $objPage;
         $objArchive = \NewsArchiveModel::findById($arrArticle['pid']);
         if (!$objArchive->disqus_addDisqus)
         {

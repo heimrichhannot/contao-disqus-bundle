@@ -36,4 +36,4 @@ composer require heimrichhannot/contao-disqus-bundle
 #### Custom
 
 * create a module with the bundles disqus comments module and enter all need informations
-* put module on the page you like
+* add module to an article 
