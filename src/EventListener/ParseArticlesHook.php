@@ -28,22 +28,21 @@ class ParseArticlesHook
         if ($objArchive->disqus_identifier)
         {
             $disqus_identifier = str_replace('{id}', $arrArticle['id'], $objArchive->disqus_identifier);
-        }
-        else
+        } else
         {
             $disqus_identifier = $arrArticle['id'];
         }
 
-        $url = Environment::get('url');
-        $path = Url::generateFrontendUrl($objPage->id);
-        $disqus_pageUrl = $url.'/'.$path.'/'.$arrArticle['alias'];
-        $twig = \System::getContainer()->get('twig');
+        $url                         = Environment::get('url');
+        $path                        = Url::generateFrontendUrl($objPage->id);
+        $disqus_pageUrl              = $url . '/' . $path . '/' . $arrArticle['alias'];
+        $twig                        = \System::getContainer()->get('twig');
         $objTemplate->disqus_section = $twig->render(
             '@HeimrichHannotContaoDisqus/disqus_comment.html.twig',
             [
-                'disqus_shortname' => $disqus_shortname,
+                'disqus_shortname'  => $disqus_shortname,
                 'disqus_identifier' => $disqus_identifier,
-                'disqus_pageUrl' => $disqus_pageUrl
+                'disqus_pageUrl'    => $disqus_pageUrl
             ]
         );
         return;
