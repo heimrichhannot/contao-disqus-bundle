@@ -1,0 +1,46 @@
+language: php
+git:
+  depth: 1
+cache:
+  directories:
+  - "$HOME/.composer/cache"
+sudo: false
+env:
+  global:
+  - COMPOSER_ALLOW_XDEBUG=0
+matrix:
+  include:
+  - php: 7.1
+    env: CONTAO_VERSION='4.4.*'
+  - php: 7.2
+    env: CONTAO_VERSION='4.4.*'
+  - php: 7.1
+    env: CONTAO_VERSION='4.5.*'
+  - php: 7.2
+    env: CONTAO_VERSION='4.5.*'
+  - php: 7.2
+    env: COVERAGE=1 CONTAO_VERSION='4.5.*'
+  allow_failures:
+  - env: COVERAGE=1 DEFAULT=0
+  fast_finish: true
+before_install:
+- if [[ "$COVERAGE" != "1" ]]; then phpenv config-rm xdebug.ini || true; fi
+install:
+- composer require contao/core-bundle:${CONTAO_VERSION}
+notifications:
+  email:
+    recipients:
+    - digitales@heimrich-hannot.de
+    on_success: never
+    on_failure: always
+  hipchat:
+    rooms:
+      secure: HdtcOE8Baw+vAsU0+RvtiuXpkqcDO3LHRha9sGqOadttCIjcWN5EFH7jTshJH2ZKzPPrxzDDgv11XKcwnEf2ePS1N4JL3s19uf/0IY6n2XY5laJQ6RXZC8lKCqHFJv3deBD6SvM3Pb8dOrgKEq19d/rpRgscVSNgR83UJeWJ640Fb7ughc0jCDFfSYj40gojgp1WrYKJxrlkvXNl8fdLBCwofB88Ba7iTbV1cYr8BTFJ89nlXIfF7TY6gUJnnAAxPwxqjjrBSDyuvQJrWnJM820o98VWbJX65jG+zNK85DjfDhBGrT087829bOOVpvlkSBcAFik+zc7Mxh+7N5L9c87vw7u1OtdMk/1ZW8P40UM/BYsJfnf6Nkmy9tij+avvBOI35pM8jyFI1Veq0Fs8ofCxRbMGWw0cWgbm1iYmTZWjZliDIBCTDQzYKi5tdw/eaLRLEQN2FMjWjZmRzs7zhnuyzw2ZUU9Eks5c4vC9EU6YOrxGVfg1dzdabZqOSWWMMjCwUwat8LLeu8nTwVdJlLWAwT5vljdAvRv1sT7wf03kY7AUMOEP7jaGX/D7yjsMMn+a9vPTRN5xxwh680NSwgTfOLVMlEKz2/CYnKfD9ievn9fAIun5TOhWxvXm4pP1FN6LO8LAF/ZG0V11PNwSepAMKjOu0IzQeyxsZDDvhGQ=
+before_script:
+- travis_wait composer install --no-interaction
+script:
+- if [[ "$COVERAGE" = "1" ]]; then travis_retry mkdir -p build/logs; fi
+- if [[ "$COVERAGE" = "1" ]]; then travis_retry php vendor/bin/phpunit --coverage-clover
+  build/logs/clover.xml || true; fi
+after_script:
+- if [[ "$COVERAGE" = "1" ]]; then travis_retry php vendor/bin/php-coveralls -v; fi
