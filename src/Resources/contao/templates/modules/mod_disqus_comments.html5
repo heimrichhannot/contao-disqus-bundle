@@ -1,28 +1,6 @@
+<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
 <!-- indexer::stop -->
 <?php $this->block('comments'); ?>
-    <<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
-    <div id="disqus_thread"></div>
-    <script>
-        var disqus_config = function () {
-            <?php
-                if ($this->disqus_identifier) {
-                    echo 'this.page.identifier = "'.$this->disqus_identifier.'";';
-                }
-                if ($this->disqus_pageUrl) {
-                    echo 'this.page.url = "'.$this->disqus_pageUrl.'";';
-                }
-            ?>
-        };
-
-        (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
-            var d = document, s = d.createElement('script');
-
-            s.src = '//<?php echo $this->disqus_shortname; ?>.disqus.com/embed.js';
-
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <?= $this->disqus_block ?>
 <?php $this->endblock(); ?>
 <!-- indexer::continue -->

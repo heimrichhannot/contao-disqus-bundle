@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.2.0-DEV] - 2018-04-04
+
+#### Added
+* `huh.disqus.renderer` service
+
+#### Changed
+* made hook class a service
+* disqus form rendered everywhere from service
+* error message if error is thrown by twig
+* removed haste_plus and composer-plugin dependency
+* updated licence
+* code enhancements
+
 ## [2.1.1] - 2017-09-01
 
 ## Fixed

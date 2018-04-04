@@ -8,10 +8,10 @@
  * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
  */
 
-$GLOBALS['FE_MOD']['miscellaneous'][HeimrichHannot\ContaoDisqusBundle\Modules\DisqusCommentsModule::MODULE_NAME] = 'HeimrichHannot\ContaoDisqusBundle\Modules\DisqusCommentsModule';
+$GLOBALS['FE_MOD']['miscellaneous'][HeimrichHannot\ContaoDisqusBundle\Modules\DisqusCommentsModule::MODULE_NAME] = \HeimrichHannot\ContaoDisqusBundle\Modules\DisqusCommentsModule::class;
 
 /**
  * Hooks
  */
 
-$GLOBALS['TL_HOOKS']['parseArticles']['hhDisqusBundle'] = ['HeimrichHannot\ContaoDisqusBundle\EventListener\ParseArticlesHook', 'addDisqus'];
+$GLOBALS['TL_HOOKS']['parseArticles']['hhDisqusBundle'] = ['huh.disqus.listener.hook', 'addDisqus'];

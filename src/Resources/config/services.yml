@@ -1,0 +1,10 @@
+services:
+  huh.disqus.renderer:
+    class: HeimrichHannot\ContaoDisqusBundle\Renderer\DisqusRenderer
+    arguments:
+     - '@twig'
+     - '@translator'
+
+  huh.disqus.listener.hook:
+    class: HeimrichHannot\ContaoDisqusBundle\EventListener\ParseArticlesHook
+    arguments: ['@contao.framework', '@huh.disqus.renderer', '@contao.routing.url_generator']

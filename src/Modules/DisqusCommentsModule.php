@@ -11,9 +11,12 @@
 namespace HeimrichHannot\ContaoDisqusBundle\Modules;
 
 
+use Contao\BackendTemplate;
+use Contao\Module;
+use Contao\System;
 use Patchwork\Utf8;
 
-class DisqusCommentsModule extends \Contao\Module
+class DisqusCommentsModule extends Module
 {
 
     const MODULE_NAME = 'contao-disqus-comments';
@@ -30,12 +33,12 @@ class DisqusCommentsModule extends \Contao\Module
         if (TL_MODE == 'BE')
         {
             /** @var BackendTemplate|object $objTemplate */
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD'][static::MODULE_NAME][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
-            $objTemplate->href = 'contao/main.php?do=themes&amp;table=tl_module&amp;act=edit&amp;id=' . $this->id;
+            $objTemplate->href = 'contao?do=themes&amp;table=tl_module&amp;act=edit&amp;id=' . $this->id;
             return $objTemplate->parse();
         }
 
@@ -48,11 +51,6 @@ class DisqusCommentsModule extends \Contao\Module
      */
     protected function compile()
     {
-        global $objPage;
-
-        $objConfig = new \stdClass();
-
-
         $this->Template->headline     = $this->headline;
         $this->Template->hl           = $this->hl;
         $this->Template->wrapperClass = $this->strWrapperClass;
@@ -60,8 +58,8 @@ class DisqusCommentsModule extends \Contao\Module
 
         $this->Template->disqus_shortname = $this->disqus_shortname;
         $this->Template->disqus_identifier = $this->disqus_identifier;
-        $url = Environment::get('url');
-        $path = Url::generateFrontendUrl($objPage->id);
-        $this->Template->disqus_pageUrl = $url.'/'.$path;
+        $this->Template->disqus_block = System::getContainer()->get('huh.disqus.renderer')->render($this->disqus_shortname, $this->disqus_identifier);
+
+
     }
 }
