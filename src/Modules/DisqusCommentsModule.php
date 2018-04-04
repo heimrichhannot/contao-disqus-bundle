@@ -59,7 +59,5 @@ class DisqusCommentsModule extends Module
         $this->Template->disqus_shortname = $this->disqus_shortname;
         $this->Template->disqus_identifier = $this->disqus_identifier;
         $this->Template->disqus_block = System::getContainer()->get('huh.disqus.renderer')->render($this->disqus_shortname, $this->disqus_identifier);
-
-
     }
 }
