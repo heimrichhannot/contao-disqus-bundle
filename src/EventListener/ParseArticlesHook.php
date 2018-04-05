@@ -41,7 +41,7 @@ class ParseArticlesHook
     }
 
 
-    public function addDisqus(FrontendTemplate $template, array $article, Module $module)
+    public function addDisqus(FrontendTemplate &$template, array $article, Module $module)
     {
         global $objPage;
         /** @var NewsArchiveModel $newsArchive */
@@ -58,6 +58,9 @@ class ParseArticlesHook
         {
             $disqus_identifier = $article['id'];
         }
+
+        $result = $this->renderer->render($disqus_shortname, $disqus_identifier);
+
         $url                      = $this->framework->getAdapter(Environment::class)->get('url');
         $path                     = $this->urlGenerator->generate($objPage->id);
         $disqus_pageUrl           = $url . '/' . $path . '/' . $article['alias'];

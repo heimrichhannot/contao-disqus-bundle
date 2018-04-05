@@ -12,6 +12,7 @@
 namespace HeimrichHannot\ContaoDisqusBundle\ContaoManager;
 
 
+use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Config\ConfigInterface;
@@ -35,8 +36,8 @@ class Plugin implements BundlePluginInterface
         return [
             BundleConfig::create(HeimrichHannotContaoDisqusBundle::class)
                 ->setLoadAfter([
-                    ContaoNewsBundle::class,
-                    HeimrichHannotContaoNewsBundle::class
+                    ContaoCoreBundle::class,
+                    ContaoNewsBundle::class
                ])
         ];
     }
