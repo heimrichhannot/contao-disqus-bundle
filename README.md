@@ -25,6 +25,8 @@ composer require heimrichhannot/contao-disqus-bundle
 
 ## Setup
 
+There are three options to integrate disqus.
+
 ### News 
 
 * in your news template (usually `news_full.html5`), add following code:
@@ -42,7 +44,7 @@ composer require heimrichhannot/contao-disqus-bundle
 
 ### Service
 
-* output the result of the `huh.disqus.renderer` service whereever you want
+* output the result of `DisqusRenderer::render()` (callable from `huh.disqus.renderer` service)
 
 ```php
 // Example from DisqusCommentModule (we recommend injecting the service instead of calling it direct from container):

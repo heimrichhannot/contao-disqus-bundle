@@ -30,10 +30,11 @@ class DisqusCommentsModule extends Module
      */
     public function generate()
     {
+        $framework = System::getContainer()->get('contao.framework');
         if (TL_MODE == 'BE')
         {
             /** @var BackendTemplate|object $objTemplate */
-            $objTemplate = new BackendTemplate('be_wildcard');
+            $objTemplate = $framework->createInstance(BackendTemplate::class, ['be_wildcard']);
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD'][static::MODULE_NAME][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
@@ -41,7 +42,15 @@ class DisqusCommentsModule extends Module
             $objTemplate->href = 'contao?do=themes&amp;table=tl_module&amp;act=edit&amp;id=' . $this->id;
             return $objTemplate->parse();
         }
+        return $this->parentGenerate();
+    }
 
+    /**
+     * @return string
+     * @codeCoverageIgnore
+     */
+    public function parentGenerate()
+    {
         return parent::generate();
     }
 
@@ -56,8 +65,18 @@ class DisqusCommentsModule extends Module
         $this->Template->wrapperClass = $this->strWrapperClass;
         $this->Template->wrapperId    = $this->strWrapperId;
 
+        global $objPage;
+
+        if ($this->disqus_identifier)
+        {
+            $disqus_identifier = str_replace('{id}', $objPage->id, $this->disqus_identifier);
+        } else
+        {
+            $disqus_identifier = $objPage->id;
+        }
+
         $this->Template->disqus_shortname = $this->disqus_shortname;
-        $this->Template->disqus_identifier = $this->disqus_identifier;
-        $this->Template->disqus_block = System::getContainer()->get('huh.disqus.renderer')->render($this->disqus_shortname, $this->disqus_identifier);
+        $this->Template->disqus_identifier = $disqus_identifier;
+        $this->Template->disqus_block = System::getContainer()->get('huh.disqus.renderer')->render($this->disqus_shortname, $disqus_identifier);
     }
 }

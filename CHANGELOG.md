@@ -1,9 +1,10 @@
 # Changelog
 
-## [2.2.0-DEV] - 2018-04-04
+## [2.2.0] - 2018-05-04
 
 #### Added
 * `huh.disqus.renderer` service
+* Dynamic insert Page ID in module
 
 #### Changed
 * made hook class a service

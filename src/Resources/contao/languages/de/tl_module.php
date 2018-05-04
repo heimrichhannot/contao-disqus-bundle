@@ -6,7 +6,7 @@ $arrLang = &$GLOBALS['TL_LANG']['tl_module'];
  * Fields
  */
 $arrLang['disqus_shortname']        = ['Forum Name', 'Der Disqus Forum Shortname.'];
-$arrLang['disqus_identifier']        = ['Einzigartiger Identifier', 'Ein einzigartiger Identifier, um das Forum zuordnen zu können.'];
+$arrLang['disqus_identifier']        = ['Seiten-Identifier', 'Ein einzigartiger Identifier, welcher eine Diskussion eindeutig identifiziert. Ein "{id}" wird durch die aktuelle Seiten-Id ersetzt.'];
 
 /**
  * Legends
