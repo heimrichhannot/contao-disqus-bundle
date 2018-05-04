@@ -76,6 +76,10 @@ class DisqusCommentsModuleTest extends ContaoTestCase
         if (!defined('TL_MODE')) {
             \define('TL_MODE', 'FE');
         }
+
+        $reflectionClass = new \ReflectionClass(DisqusCommentsModule::class);
+        $testMethod = $reflectionClass->getMethod("compile");
+        $testMethod->setAccessible(true);
         $module = $this->getMockBuilder(DisqusCommentsModule::class)->disableOriginalConstructor()->disableOriginalClone()->setMethods(["parentGenerate"])->getMock();
         $module->expects($this->once())->method('parentGenerate')->willReturn(null);
 
@@ -86,6 +90,12 @@ class DisqusCommentsModuleTest extends ContaoTestCase
         $this->assertNull($module->generate());
 
         $GLOBALS['objPage'] = (object) ["id" => 5];
+        $testMethod->invokeArgs($module, []);
+        $this->assertSame("disqusIdent-5", $module->Template->disqus_identifier);
+
+        $module->disqus_identifier = "";
+        $testMethod->invokeArgs($module, []);
+        $this->assertSame(5, $module->Template->disqus_identifier);
 
     }
 
