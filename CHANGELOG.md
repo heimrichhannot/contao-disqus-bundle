@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.2.1] - 2022-01-12
+- Fixed: non-public service
+
 ## [2.2.0] - 2018-05-04
 
 #### Added

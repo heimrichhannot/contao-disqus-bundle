@@ -1,4 +1,7 @@
 services:
+  _defaults:
+    public: true
+
   huh.disqus.renderer:
     class: HeimrichHannot\ContaoDisqusBundle\Renderer\DisqusRenderer
     arguments:
