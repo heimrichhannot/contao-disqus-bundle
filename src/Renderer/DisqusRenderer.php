@@ -1,20 +1,16 @@
 <?php
-/**
- * Contao Open Source CMS
- *
- * Copyright (c) 2018 Heimrich & Hannot GmbH
- *
- * @author  Thomas Körner <t.koerner@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
- */
 
+/*
+ * Copyright (c) 2022 Heimrich & Hannot GmbH
+ *
+ * @license LGPL-3.0-or-later
+ */
 
 namespace HeimrichHannot\ContaoDisqusBundle\Renderer;
 
-
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
-use Twig_Error;
+use Twig\Error\Error;
 
 class DisqusRenderer
 {
@@ -34,27 +30,23 @@ class DisqusRenderer
     }
 
     /**
-     * @param string $disqus_shortname
      * @param null $disqus_identifier
-     * @param string|null $disqus_pageUrl
+     *
      * @return string
      */
     public function render(string $disqus_shortname, $disqus_identifier = null, string $disqus_pageUrl = null)
     {
-        try
-        {
+        try {
             return $this->twig->render(
                 '@HeimrichHannotContaoDisqus/disqus_comment.html.twig',
                 [
-                    'disqus_shortname'  => $disqus_shortname,
+                    'disqus_shortname' => $disqus_shortname,
                     'disqus_identifier' => $disqus_identifier,
-                    'disqus_pageUrl'    => $disqus_pageUrl
+                    'disqus_pageUrl' => $disqus_pageUrl,
                 ]
             );
-        } catch (Twig_Error $e)
-        {
+        } catch (Error $e) {
             return '<p>'.$this->translator->trans('huh.disqus.renderer.error').'</p>';
         }
     }
-
 }

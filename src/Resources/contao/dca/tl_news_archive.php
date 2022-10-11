@@ -1,17 +1,16 @@
 <?php
-/**
- * Contao Open Source CMS
+
+/*
+ * Copyright (c) 2022 Heimrich & Hannot GmbH
  *
- * Copyright (c) 2017 Heimrich & Hannot GmbH
- *
- * @author  Thomas Körner <t.koerner@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
+ * @license LGPL-3.0-or-later
  */
 
-$arrDca = &$GLOBALS['TL_DCA']['tl_news_archive'];
-$translator = System::getContainer()->get('translator');
+use Contao\CoreBundle\DataContainer\PaletteManipulator;
 
-$palette = \Contao\CoreBundle\DataContainer\PaletteManipulator::create();
+$arrDca = &$GLOBALS['TL_DCA']['tl_news_archive'];
+
+$palette = PaletteManipulator::create();
 $palette->addField('disqus_addDisqus', 'comments_legend', $palette::POSITION_APPEND)
     ->applyToPalette('default', 'tl_news_archive');
 
@@ -23,23 +22,23 @@ $fields = [
         'label' => &$GLOBALS['TL_LANG']['tl_news_archive']['disqus_addDisqus'],
         'exclude' => true,
         'inputType' => 'checkbox',
-        'eval' => ['tl_class' => 'clr','submitOnChange' => true],
+        'eval' => ['tl_class' => 'clr', 'submitOnChange' => true],
         'sql' => "char(1) NOT NULL default '0'",
     ],
     'disqus_shortname' => [
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['disqus_shortname'],
-        'exclude'                 => true,
-        'inputType'               => 'text',
-        'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
-        'sql'                     => "varchar(255) NOT NULL default ''"
+        'label' => &$GLOBALS['TL_LANG']['tl_module']['disqus_shortname'],
+        'exclude' => true,
+        'inputType' => 'text',
+        'eval' => ['mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'],
+        'sql' => "varchar(255) NOT NULL default ''",
     ],
     'disqus_identifier' => [
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['disqus_identifier'],
-        'exclude'                 => true,
-        'inputType'               => 'text',
-        'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
-        'sql'                     => "varchar(255) NOT NULL default ''"
-    ]
+        'label' => &$GLOBALS['TL_LANG']['tl_module']['disqus_identifier'],
+        'exclude' => true,
+        'inputType' => 'text',
+        'eval' => ['mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'],
+        'sql' => "varchar(255) NOT NULL default ''",
+    ],
 ];
 
 $arrDca['fields'] = array_merge($arrDca['fields'], $fields);
