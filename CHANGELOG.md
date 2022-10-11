@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased] - 2022-10-11
+## [2.3.0] - 2022-10-11
 - Changed: allow php 8
 - Fixed: compatibility with contao 4.13
 - Fixed: added missing license file
