@@ -1,5 +1,8 @@
 # Changelog
 
+## [Unreleased] - 2022-10-11
+- Fixed: added missing license file
+
 ## [2.2.1] - 2022-01-12
 - Fixed: non-public service
 
